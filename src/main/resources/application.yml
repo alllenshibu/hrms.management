@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Employee Management
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://dpg-csq5mst2ng1s739a9bpg-a.singapore-postgres.render.com:5432/db_gorilla_hub
+    hikari:
+      maximum-pool-size: 10
+    username: db_gorilla_hub_user
+    password: tFyrSUAyoaYbIMcdqyrStP8M3Rm5ENtL
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
