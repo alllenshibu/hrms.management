@@ -11,4 +11,6 @@ import com.allenshibu.hrms.management.model.Employee;
 public interface EmployeeRepository extends ListCrudRepository<Employee, UUID> {
 
     Optional<Employee> findByEmail(String email);
+
+    Optional<Employee> findByEmployeeId(String employeeId);
 }

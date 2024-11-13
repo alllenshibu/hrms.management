@@ -4,11 +4,12 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://dpg-csq5mst2ng1s739a9bpg-a.singapore-postgres.render.com:5432/db_gorilla_hub
+    url: jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:6543/postgres
     hikari:
       maximum-pool-size: 10
-    username: db_gorilla_hub_user
-    password: tFyrSUAyoaYbIMcdqyrStP8M3Rm5ENtL
+      schema: hrms.management
+    username: postgres.jjkvwelykzzjnvcpjmai
+    password: 5aeyNCPqUhRJsnUG
 
   jpa:
     hibernate:

@@ -41,6 +41,16 @@ public class EmployeeService {
         }
     }
 
+    public Employee getEmployeeByEmployeeId(String employeeId) {
+        Optional<Employee> employee = employeeRepository.findByEmployeeId(employeeId);
+
+        if (employee.isPresent()) {
+            return employee.get();
+        } else {
+            throw new EmployeeNotFoundException(employeeId);
+        }
+    }
+
     public Employee addNewEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }

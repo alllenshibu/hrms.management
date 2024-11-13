@@ -45,6 +45,11 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployeeByEmail(email));
     }
 
+    @GetMapping("/employee-id/{employeeId}")
+    public ResponseEntity<?> getEmployeeByEmployeeId(@PathVariable String employeeId) {
+        return ResponseEntity.ok(employeeService.getEmployeeByEmployeeId(employeeId));
+    }
+
     @PostMapping("/")
     public ResponseEntity<Employee> addNewEmployee(@RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.addNewEmployee(employee));
