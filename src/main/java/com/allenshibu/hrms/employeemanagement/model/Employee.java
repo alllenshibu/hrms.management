@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -23,25 +25,29 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @NotNull
+    @NotNull(message = "Employee ID is required")
     @Column(nullable = false)
     private String employeeId;
 
-    @NotNull
+    @NotNull(message = "First name is required")
     @Column(nullable = false)
     private String firstName;
-    
+
     private String middleName;
 
-    @NotNull
+    @NotNull(message = "Last name is required")
     @Column(nullable = false)
     private String lastName;
 
-    @NotNull
+    @NotNull(message = "Email is required")
     @Column(nullable = false)
-    @Email
+    @Email(message = "Invalid email")
     private String email;
 
     @Email
     private String[] alternateEmails;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 }

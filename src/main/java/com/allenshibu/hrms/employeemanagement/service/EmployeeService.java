@@ -31,6 +31,16 @@ public class EmployeeService {
         }
     }
 
+    public Employee getEmployeeByEmail(String email) {
+        Optional<Employee> employee = employeeRepository.findByEmail(email);
+
+        if (employee.isPresent()) {
+            return employee.get();
+        } else {
+            throw new EmployeeNotFoundException(email);
+        }
+    }
+
     public Employee addNewEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
