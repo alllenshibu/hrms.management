@@ -1,13 +1,13 @@
-package com.allenshibu.hrms.employeemanagement;
+package com.allenshibu.hrms.management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmployeeManagementApplication {
+public class ManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeManagementApplication.class, args);
+		SpringApplication.run(ManagementApplication.class, args);
 	}
 
 }

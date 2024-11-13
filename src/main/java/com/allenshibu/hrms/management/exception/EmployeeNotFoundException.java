@@ -1,4 +1,4 @@
-package com.allenshibu.hrms.employeemanagement.exception;
+package com.allenshibu.hrms.management.exception;
 
 import java.util.UUID;
 

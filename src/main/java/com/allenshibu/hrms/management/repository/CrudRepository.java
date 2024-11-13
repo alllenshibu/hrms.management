@@ -1,4 +1,4 @@
-package com.allenshibu.hrms.employeemanagement.repository;
+package com.allenshibu.hrms.management.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

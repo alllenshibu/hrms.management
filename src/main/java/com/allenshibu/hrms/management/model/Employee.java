@@ -1,4 +1,4 @@
-package com.allenshibu.hrms.employeemanagement.model;
+package com.allenshibu.hrms.management.model;
 
 import java.util.UUID;
 

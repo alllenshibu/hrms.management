@@ -1,10 +1,10 @@
-package com.allenshibu.hrms.employeemanagement;
+package com.allenshibu.hrms.management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeManagementApplicationTests {
+class ManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
