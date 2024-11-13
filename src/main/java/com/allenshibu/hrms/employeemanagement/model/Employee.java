@@ -30,7 +30,7 @@ public class Employee {
     @NotNull
     @Column(nullable = false)
     private String firstName;
-
+    
     private String middleName;
 
     @NotNull
