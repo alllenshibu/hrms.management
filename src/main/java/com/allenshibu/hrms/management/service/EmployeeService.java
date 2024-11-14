@@ -61,6 +61,8 @@ public class EmployeeService {
         if (existingEmployee.isPresent()) {
             Employee currentEmployee = existingEmployee.get();
 
+            currentEmployee.setEmployeeId(employee.getEmployeeId());
+
             currentEmployee.setFirstName(employee.getFirstName());
 
             if (employee.getMiddleName() != null && !employee.getMiddleName().isEmpty()) {

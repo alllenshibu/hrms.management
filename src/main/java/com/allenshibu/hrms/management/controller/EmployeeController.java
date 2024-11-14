@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.allenshibu.hrms.management.exception.EmployeeNotFoundException;
@@ -20,6 +21,7 @@ import com.allenshibu.hrms.management.model.Employee;
 import com.allenshibu.hrms.management.service.EmployeeService;
 
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired

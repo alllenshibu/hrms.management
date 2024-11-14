@@ -31,7 +31,7 @@ public class Department {
 
     @NotNull(message = "Department name is required")
     @Column(nullable = false)
-    private String departmentName;
+    private String name;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees;
