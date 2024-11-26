@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,12 +34,8 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable String id) {
-        try {
-            UUID employeeId = UUID.fromString(id);
-            return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid UUID format");
-        }
+        UUID employeeId = UUID.fromString(id);
+        return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
     }
 
     @GetMapping("/email/{email}")
@@ -59,23 +55,20 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
-        try {
-            UUID employeeId = UUID.fromString(id);
-            return ResponseEntity.ok(employeeService.updateEmployee(employeeId, employee));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Invalid UUID format");
-        }
+        UUID employeeId = UUID.fromString(id);
+        return ResponseEntity.ok(employeeService.updateEmployee(employeeId, employee));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable String id) {
-        try {
-            UUID employeeId = UUID.fromString(id);
-            employeeService.deleteEmployee(employeeId);
-            return ResponseEntity.ok("Employee deleted successfully");
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Invalid UUID format");
-        }
+        UUID employeeId = UUID.fromString(id);
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("Employee deleted successfully");
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
     @ExceptionHandler(EmployeeNotFoundException.class)
