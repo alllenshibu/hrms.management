@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +29,7 @@ public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Department>> getAllDepartments() {
         return ResponseEntity.ok(departmentService.getAllDepartments());
     }
@@ -37,7 +38,6 @@ public class DepartmentController {
     public ResponseEntity<?> getDepartmentById(@PathVariable String id) {
         UUID departmentId = UUID.fromString(id);
         return ResponseEntity.ok(departmentService.getDepartmentById(departmentId));
-
     }
 
     @GetMapping("/department-id/{departmentId}")
@@ -45,7 +45,7 @@ public class DepartmentController {
         return ResponseEntity.ok(departmentService.getDepartmentByDepartmentId(departmentId));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Department> addNewDepartment(@RequestBody Department department) {
         return ResponseEntity.ok(departmentService.addNewDepartment(department));
     }
@@ -54,7 +54,6 @@ public class DepartmentController {
     public ResponseEntity<?> updateDepartment(@PathVariable String id, @RequestBody Department department) {
         UUID departmentId = UUID.fromString(id);
         return ResponseEntity.ok(departmentService.updateDepartment(departmentId, department));
-
     }
 
     @DeleteMapping("/{id}")
@@ -86,6 +85,11 @@ public class DepartmentController {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 

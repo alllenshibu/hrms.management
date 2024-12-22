@@ -27,7 +27,7 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Employee>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
@@ -48,7 +48,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployeeByEmployeeId(employeeId));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Employee> addNewEmployee(@RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.addNewEmployee(employee));
     }

@@ -72,8 +72,8 @@ public class EmployeeService {
             currentEmployee.setLastName(employee.getLastName());
             currentEmployee.setEmail(employee.getEmail());
 
-            if (employee.getAlternateEmails() != null && employee.getAlternateEmails().length != 0) {
-                currentEmployee.setAlternateEmails(employee.getAlternateEmails());
+            if (employee.getAlternateEmail() != null && !employee.getAlternateEmail().isEmpty()) {
+                currentEmployee.setAlternateEmail(employee.getAlternateEmail());
             }
 
             return employeeRepository.save(currentEmployee);
