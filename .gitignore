@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Environments ###
-src/main/resources/application.yml
+.env
