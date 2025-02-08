@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.allenshibu.hrms.management.exception.EmployeeNotFoundException;
 import com.allenshibu.hrms.management.model.Employee;
 import com.allenshibu.hrms.management.repository.EmployeeRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class EmployeeService {
 
     @Autowired

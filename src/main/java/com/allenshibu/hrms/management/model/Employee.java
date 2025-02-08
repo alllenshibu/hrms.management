@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -18,7 +19,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Employee {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -45,7 +45,7 @@ public class Employee {
     @Email
     private String alternateEmail;
 
-    @ManyToMany(mappedBy = "employees")
-    @JsonBackReference
+    @ManyToMany(mappedBy = "employees", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("employees")
     private List<Department> departments;
 }
